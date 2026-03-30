@@ -1,3 +1,17 @@
+export function formatDate(date: Date | undefined): string {
+  if (!date) return ''
+  return date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' })
+}
+
+export function generateId({ length = 8 }: { length?: number } = {}): string {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  let result = ''
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length))
+  }
+  return result
+}
+
 export function resolveErrorMessage(error: unknown): string {
   if (typeof error === 'string') return error
 

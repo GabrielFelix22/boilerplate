@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Form } from '@repo/ui';
-import { useForm } from 'react-hook-form';
+import { Button, Checkbox, Form, Label, TextField } from '@repo/ui';
+import { useForm, useFormContext } from 'react-hook-form';
 import { ForgotPasswordDialog } from '@/features/login/components/forgot-password-dialog';
 import { type LoginInput, loginSchema } from '../auth.schemas';
 import { useLoginMutation } from '../use-auth-api';
@@ -13,7 +13,8 @@ export function LoginForm() {
     mode: 'onBlur',
   });
 
-  const handleSubmit = (data: LoginInput) => login(data);
+  const handleSubmit = (data: LoginInput) =>
+    login({ ...data, remember: data.remember ?? false });
 
   return (
     <Form
@@ -23,32 +24,47 @@ export function LoginForm() {
       enableUnsavedWarning={false}
       preventSubmitIfPristine={false}
     >
-      <Form.Input
+      <TextField
         name="username"
         label="Usuário"
         autoComplete="username"
         disabled={isPending}
       />
-      <Form.Input
+      <TextField
         name="password"
         label="Senha"
         type="password"
         autoComplete="current-password"
         disabled={isPending}
       />
-      <div className="flex items-center justify-between">
-        <Form.Remember name="remember" disabled={isPending}>
-          Manter conectado
-        </Form.Remember>
-        <ForgotPasswordDialog />
-      </div>
-      <Form.Submit
-        loading={isPending}
-        loadingText="Entrando..."
+      <RememberField isPending={isPending} />
+      <Button
+        type="submit"
+        disabled={isPending}
         className="w-full"
+        variant="default"
       >
-        Entrar
-      </Form.Submit>
+        {isPending ? 'Entrando...' : 'Entrar'}
+      </Button>
     </Form>
+  );
+}
+
+function RememberField({ isPending }: { isPending: boolean }) {
+  const { register } = useFormContext<LoginInput>();
+  return (
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-2">
+        <Checkbox
+          id="remember"
+          disabled={isPending}
+          {...register('remember')}
+        />
+        <Label htmlFor="remember" className="font-normal cursor-pointer">
+          Manter conectado
+        </Label>
+      </div>
+      <ForgotPasswordDialog />
+    </div>
   );
 }

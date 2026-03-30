@@ -11,3 +11,12 @@ export interface ILoginResponse {
   refresh_expires_in: number;
   token_type: string;
 }
+
+export type ForgotPasswordPayload = {
+  email: string;
+};
+
+export type ResetPasswordPayload = {
+  newPassword: string;
+  checkPassword: string;
+};

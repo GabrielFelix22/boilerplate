@@ -173,14 +173,16 @@ export function Sidebar({
         )}
       >
         <div className="flex h-[57px] shrink-0 items-center justify-center overflow-hidden">
-          <img
-            src={collapsed ? LogoIcon : Logo}
-            alt="Logo"
-            className={cn(
-              'w-auto transition-all duration-300',
-              collapsed ? 'h-8' : 'h-12',
-            )}
-          />
+          <a href="/">
+            <img
+              src={collapsed ? LogoIcon : Logo}
+              alt="Logo"
+              className={cn(
+                'w-auto transition-all duration-300',
+                collapsed ? 'h-8' : 'h-12',
+              )}
+            />
+          </a>
         </div>
 
         <nav

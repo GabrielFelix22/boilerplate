@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
   Form,
+  TextField,
 } from '@repo/ui';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -37,7 +38,12 @@ export function ForgotPasswordDialog() {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="link" size="sm" className="px-0" type="button">
+        <Button
+          variant="link"
+          size="sm"
+          className="px-0 cursor-pointer"
+          type="button"
+        >
           Esqueceu a senha?
         </Button>
       </DialogTrigger>
@@ -50,7 +56,7 @@ export function ForgotPasswordDialog() {
           </DialogDescription>
         </DialogHeader>
         <Form form={form} onSubmit={handleSubmit}>
-          <Form.Input
+          <TextField
             name="email"
             label="E-mail"
             type="email"
@@ -66,9 +72,9 @@ export function ForgotPasswordDialog() {
             >
               Cancelar
             </Button>
-            <Form.Submit loading={isPending} loadingText="Enviando...">
-              Enviar
-            </Form.Submit>
+            <Button type="submit" disabled={isPending}>
+              {isPending ? 'Enviando...' : 'Enviar'}
+            </Button>
           </DialogFooter>
         </Form>
       </DialogContent>
