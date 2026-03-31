@@ -67,24 +67,29 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="px-2">
-        <SidebarMenuButton asChild tooltip="Página Inicial" className="h-10">
+        <Link
+          to="/"
+          className="hidden group-data-[collapsible=icon]:flex items-center justify-center py-1"
+        >
+          <img
+            src={LogoIcon}
+            alt="Logo"
+            className="h-12 w-auto object-contain"
+          />
+        </Link>
+        <SidebarMenuButton
+          asChild
+          tooltip="Página Inicial"
+          className="h-10 group-data-[collapsible=icon]:hidden"
+        >
           <Link to="/">
-            <img
-              src={LogoIcon}
-              alt="Logo"
-              className="hidden h-8 w-full object-contain group-data-[collapsible=icon]:block"
-            />
-            <img
-              src={Logo}
-              alt="Logo"
-              className="h-10 w-full object-contain group-data-[collapsible=icon]:hidden"
-            />
+            <img src={Logo} alt="Logo" className="h-10 w-full object-contain" />
           </Link>
         </SidebarMenuButton>
       </SidebarHeader>
 
       <SidebarContent>
-        <SidebarGroup>
+        <SidebarGroup className="pt-50">
           <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>

@@ -44,7 +44,7 @@ export function AppBreadcrumb({
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const matches = useMatches();
 
-  const parts = pathname.split('/').filter(Boolean);
+  const parts = pathname.split('/').filter((seg) => Boolean(seg) && seg !== 'dashboard');
   const crumbs = parts.map((seg, idx) => {
     const href = `/${parts.slice(0, idx + 1).join('/')}`;
     const isLast = idx === parts.length - 1;
@@ -110,7 +110,5 @@ export function AppBreadcrumb({
     </div>
   );
 }
-
-export default AppBreadcrumb;
 
 export default AppBreadcrumb;

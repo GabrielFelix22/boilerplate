@@ -2,7 +2,20 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "Bash(pnpm add:*)"
+      "Bash(pnpm add:*)",
+      "Bash(ls -la \"c:\\\\dev\\\\pulse-teste\\\\apps\\\\frontend-one\\\\src\\\\hooks\"\" 2>/dev/null || echo \"Directory not found \")",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(grep -r \"useIsMobile\\\\|use-mobile\" /c/dev/pulse-teste/apps/frontend-one/src --include=*.ts --include=*.tsx)",
+      "Bash(npx tsc:*)",
+      "Bash(node -e \"require\\(''''./apps/frontend-one/node_modules/@radix-ui/react-slot''''\\)\")",
+      "Bash(node -e \"require\\(''''./apps/frontend-one/node_modules/class-variance-authority''''\\)\")",
+      "Bash(find c:/dev/pulse-teste/node_modules/.pnpm -maxdepth 1 -name @radix-ui+react-slot* -o -name class-variance*)",
+      "Bash(pnpm --filter frontend-one exec tsc --noEmit)",
+      "Bash(grep -r \"useSidebar\\\\|SidebarProvider\\\\|AppSidebar\\\\|AppBreadcrumb\" /c/dev/pulse-teste/apps/frontend-one/src --include=*.tsx --include=*.ts)",
+      "Bash(npm run:*)",
+      "Bash(find /c/dev/pulse-teste -name app-breadcrumb.tsx -o -name *app-breadcrumb*)",
+      "Bash(pnpm --filter frontend-one build)"
     ]
   }
 }
