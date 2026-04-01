@@ -1,13 +1,13 @@
 import type { ILoginRequest, ILoginResponse } from './auth.types';
 
-const MOCK_USER = { username: 'gabriel_felix', password: '@Felix10' };
+const MOCK_USER = { email: 'gabriel.felix@example.com', password: '@Felix10' };
 
 function buildMockJwt() {
   const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
   const payload = btoa(
     JSON.stringify({
       sub: 'mock-user-id',
-      preferred_username: MOCK_USER.username,
+      preferred_username: MOCK_USER.email,
       name: 'Mister',
       email: 'dev@dev.com',
       realm_access: { roles: ['admin'] },
@@ -19,7 +19,7 @@ function buildMockJwt() {
 
 export function mockLogin(credentials: ILoginRequest): ILoginResponse {
   if (
-    credentials.username !== MOCK_USER.username ||
+    credentials.email !== MOCK_USER.email ||
     credentials.password !== MOCK_USER.password
   ) {
     throw new Error('Usuário ou senha inválidos');

@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Checkbox, Form, Label, TextField } from '@repo/ui';
-import { useForm, useFormContext } from 'react-hook-form';
+import { Button, Form, TextField } from '@repo/ui';
+import { useForm, } from 'react-hook-form';
 import { ForgotPasswordDialog } from '@/features/login/components/forgot-password-dialog';
 import { type LoginInput, loginSchema } from '../auth.schemas';
 import { useLoginMutation } from '../use-auth-api';
@@ -9,7 +9,7 @@ export function LoginForm() {
   const { mutate: login, isPending } = useLoginMutation();
   const form = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
-    defaultValues: { username: '', password: '', remember: false },
+    defaultValues: { email: '', password: '', remember: false },
     mode: 'onBlur',
   });
 
@@ -25,9 +25,11 @@ export function LoginForm() {
       preventSubmitIfPristine={false}
     >
       <TextField
-        name="username"
-        label="Usuário"
-        autoComplete="username"
+        name="email"
+        label="E-mail"
+        type='email'
+        autoComplete="email"
+        placeholder='Digite seu e-mail'
         disabled={isPending}
       />
       <TextField
@@ -35,6 +37,7 @@ export function LoginForm() {
         label="Senha"
         type="password"
         autoComplete="current-password"
+        placeholder='Digite sua senha'
         disabled={isPending}
       />
       <RememberField isPending={isPending} />
@@ -51,10 +54,10 @@ export function LoginForm() {
 }
 
 function RememberField({ isPending }: { isPending: boolean }) {
-  const { register } = useFormContext<LoginInput>();
+  // const { register } = useFormContext<LoginInput>();
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-2">
+    <div className="flex items-center justify-end">
+      {/* <div className="flex items-center gap-2">
         <Checkbox
           id="remember"
           disabled={isPending}
@@ -63,7 +66,7 @@ function RememberField({ isPending }: { isPending: boolean }) {
         <Label htmlFor="remember" className="font-normal cursor-pointer">
           Manter conectado
         </Label>
-      </div>
+      </div> */}
       <ForgotPasswordDialog />
     </div>
   );

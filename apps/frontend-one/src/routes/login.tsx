@@ -9,13 +9,13 @@ export const Route = createFileRoute('/login')({
 });
 function LoginPage() {
   return (
-    <div className="flex h-dvh items-center justify-center bg-page-bg">
+    <div className="flex h-dvh items-center justify-center bg-login-gradient">
       <div className="w-full max-w-sm space-y-6 px-4">
         <div className="space-y-1 text-center">
           <h1 className="text-2xl font-bold tracking-tight">
             Acesso ao sistema
           </h1>
-          <p className="text-sm text-subtle-text">
+          <p className="text-sm text-login-text">
             Informe suas credenciais para continuar
           </p>
         </div>

@@ -33,6 +33,8 @@
   /* Muted: texto de apoio, labels, placeholders */
   --subtle-bg: oklch(0.96 0.002 260);
   --subtle-text: oklch(0.52 0.006 260);
+  --login-text: oklch(0.25 0.01 260);
+
 
   /* Destructive */
   --danger: oklch(0.55 0.18 25);
@@ -228,5 +230,12 @@
 
   body {
     @apply bg-page-bg text-page-text;
+  }
+}
+
+@layer utilities {
+  .bg-login-gradient {
+    background: linear-gradient(180deg, rgba(170, 193, 250, 0.50) 0%, rgba(170, 193, 250, 0.35) 50%, rgba(255, 255, 255, 0.00) 80%), #FFF;
+
   }
 }
