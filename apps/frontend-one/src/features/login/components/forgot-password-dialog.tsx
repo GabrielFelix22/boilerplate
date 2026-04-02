@@ -36,7 +36,7 @@ export function ForgotPasswordDialog() {
   };
 
   return (
-    <Dialog open={open} onOpenChange={handleOpenChange}>
+    <Dialog open={open} onOpenChange={handleOpenChange} >
       <DialogTrigger asChild>
         <Button
           variant="link"
@@ -47,7 +47,7 @@ export function ForgotPasswordDialog() {
           Esqueceu a senha?
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent overlayClassName="bg-black/40 backdrop-blur-xs">
         <DialogHeader>
           <DialogTitle>Recuperar senha</DialogTitle>
           <DialogDescription>

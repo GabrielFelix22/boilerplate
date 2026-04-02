@@ -16,7 +16,7 @@ function LoginPage() {
             Para acessar o sistema
           </h1>
           <p className="text-sm text-login-text">
-            Informe o seu e-mail para continuar
+            Informe suas credenciais para continuar
           </p>
         </div>
         <div className="rounded-lg border bg-card-bg p-6 shadow-sm">

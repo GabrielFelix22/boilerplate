@@ -19,7 +19,8 @@ function buildMockJwt() {
 
 export function mockLogin(credentials: ILoginRequest): ILoginResponse {
   if (
-    (credentials.email !== MOCK_USER.email)
+    credentials.email !== MOCK_USER.email ||
+    credentials.password !== MOCK_USER.password
   ) {
     throw new Error('Usuário ou senha inválidos');
   }
