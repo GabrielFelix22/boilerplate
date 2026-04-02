@@ -17,6 +17,7 @@ export type ForgotPasswordPayload = {
 };
 
 export type ResetPasswordPayload = {
+  token: string;
   newPassword: string;
   checkPassword: string;
 };

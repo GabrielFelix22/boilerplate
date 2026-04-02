@@ -32,6 +32,7 @@ export async function forgotPassword(payload: ForgotPasswordPayload) {
 
 export async function resetPassword(payload: ResetPasswordPayload) {
   await instanceWithoutInterceptors.put(`${ENDPOINT}/reset-password`, {
+    token: payload.token,
     new_password: payload.newPassword,
     check_password: payload.checkPassword,
   });

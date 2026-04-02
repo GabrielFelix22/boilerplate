@@ -254,6 +254,10 @@ importers:
         version: 5.9.3
 
   packages/utils:
+    dependencies:
+      axios:
+        specifier: ^1.13.6
+        version: 1.13.6
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
