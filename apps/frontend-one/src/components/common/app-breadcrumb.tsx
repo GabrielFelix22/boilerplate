@@ -44,11 +44,18 @@ export function AppBreadcrumb({
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const matches = useMatches();
 
-  const parts = pathname.split('/').filter((seg) => Boolean(seg) && seg !== 'dashboard');
-  const crumbs = parts.map((seg, idx) => {
-    const href = `/${parts.slice(0, idx + 1).join('/')}`;
-    const isLast = idx === parts.length - 1;
-    const prev = idx > 0 ? parts[idx - 1] : undefined;
+  const parts = pathname
+    .split('/')
+    .filter((seg) => Boolean(seg) && seg !== 'dashboard');
+  const _filteredParts =
+    parts[0] === 'solicitacoes' && parts[1] === 'nova'
+      ? parts.filter((seg) => seg !== 'solicitacoes')
+      : parts;
+
+  const crumbs = _filteredParts.map((seg, idx) => {
+    const href = `/${_filteredParts.slice(0, idx + 1).join('/')}`;
+    const isLast = idx === _filteredParts.length - 1;
+    const prev = idx > 0 ? _filteredParts[idx - 1] : undefined;
     const isNumericId = /^\d+$/.test(seg);
 
     let label = toLabel(seg);

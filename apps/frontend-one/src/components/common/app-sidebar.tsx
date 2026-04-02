@@ -39,12 +39,18 @@ type NavLink = {
   label: string;
   to: string;
   icon: LucideIcon;
+  exact?: boolean;
 };
 
 const NAV_LINKS: NavLink[] = [
   { label: 'Dashboard', to: '/dashboard', icon: LayoutDashboard },
   { label: 'Meus Contratos', to: '/contratos', icon: ClipboardPen },
-  { label: 'Minhas Solicitações', to: '/solicitacoes', icon: Inbox },
+  {
+    label: 'Minhas Solicitações',
+    to: '/solicitacoes',
+    icon: Inbox,
+    exact: true,
+  },
   { label: 'Documentação', to: '/documentacao', icon: BookOpen },
   { label: 'Nova Solicitação', to: '/solicitacoes/nova', icon: FilePlus },
 ];
@@ -95,8 +101,10 @@ export function AppSidebar() {
             <SidebarMenu>
               {NAV_LINKS.map((item) => {
                 const Icon = item.icon;
-                const isActive =
-                  pathname === item.to || pathname.startsWith(`${item.to}/`);
+                const isActive = item.exact
+                  ? pathname === item.to
+                  : pathname === item.to || pathname.startsWith(`${item.to}/`);
+
                 return (
                   <SidebarMenuItem key={item.to}>
                     <SidebarMenuButton
