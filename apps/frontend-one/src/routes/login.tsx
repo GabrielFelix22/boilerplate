@@ -13,10 +13,10 @@ function LoginPage() {
       <div className="w-full max-w-sm space-y-6 px-4">
         <div className="space-y-1 text-center">
           <h1 className="text-2xl font-bold tracking-tight">
-            Acesso ao sistema
+            Para acessar o sistema
           </h1>
           <p className="text-sm text-login-text">
-            Informe suas credenciais para continuar
+            Informe o seu e-mail para continuar
           </p>
         </div>
         <div className="rounded-lg border bg-card-bg p-6 shadow-sm">

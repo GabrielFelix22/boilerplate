@@ -43,10 +43,19 @@ export function useLoginMutation() {
   const router = useRouter();
   return useMutation({
     mutationFn: login,
+    onError: (error) => {
+      toast.error('Erro ao fazer login', {
+        description:
+          error instanceof Error ? error.message : 'Ocorreu um erro desconhecido',
+      });
+    },
     onSuccess: (data, variables) => {
       setSession({ ...data, remember: variables.remember });
       const search = router.state.location.search as { redirect?: string };
       router.navigate({ to: search?.redirect ?? '/' });
+      toast.success('Login realizado com sucesso', {
+        description: 'Seja bem-vindo de volta!',
+      });
     },
   });
 }

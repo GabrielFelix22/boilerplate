@@ -9,7 +9,7 @@ export function LoginForm() {
   const { mutate: login, isPending } = useLoginMutation();
   const form = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
-    defaultValues: { email: '', password: '', remember: false },
+    defaultValues: { email: '', remember: false },
     mode: 'onBlur',
   });
 
@@ -20,7 +20,7 @@ export function LoginForm() {
     <Form
       form={form}
       onSubmit={handleSubmit}
-      className="w-full max-w-sm"
+      className="w-full max-w-sm space-y-8 py-8"
       enableUnsavedWarning={false}
       preventSubmitIfPristine={false}
     >
@@ -32,15 +32,15 @@ export function LoginForm() {
         placeholder='Digite seu e-mail'
         disabled={isPending}
       />
-      <TextField
+      {/* <TextField
         name="password"
         label="Senha"
         type="password"
         autoComplete="current-password"
         placeholder='Digite sua senha'
         disabled={isPending}
-      />
-      <RememberField isPending={isPending} />
+      /> */}
+      {/* <ForgotYourPassword isPending={isPending} /> */}
       <Button
         type="submit"
         disabled={isPending}
@@ -53,7 +53,7 @@ export function LoginForm() {
   );
 }
 
-function RememberField({ isPending }: { isPending: boolean }) {
+function _ForgotYourPassword({ isPending }: { isPending: boolean }) {
   // const { register } = useFormContext<LoginInput>();
   return (
     <div className="flex items-center justify-end">
